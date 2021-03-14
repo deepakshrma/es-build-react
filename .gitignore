@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+vendor
+dist
+node_modules
+*.exe
