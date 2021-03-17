@@ -9,12 +9,14 @@ import (
 func main() {
 	result := api.Build(api.BuildOptions{
 		EntryPoints:       []string{"src/app.tsx"},
-		ChunkNames:        "chunks/[name]-[hash]",
+		Outdir:            "dist",
 		Bundle:            true,
+		Write:             true,
+		LogLevel:          api.LogLevelInfo,
+		ChunkNames:        "chunks/[name]-[hash]",
 		MinifyWhitespace:  true,
 		MinifyIdentifiers: true,
 		MinifySyntax:      true,
-		Outdir:            "dist",
 		Splitting:         true,
 		Format:            api.FormatESModule,
 		Color:             api.ColorAlways,
@@ -31,9 +33,7 @@ func main() {
 			{api.EngineSafari, "11"},
 			{api.EngineEdge, "16"},
 		},
-		Write: true,
 	})
-
 	if len(result.Errors) > 0 {
 		os.Exit(1)
 	}
